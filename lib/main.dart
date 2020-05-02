@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:monii/live_money_screen.dart';
+import 'package:monii/utils/themes.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,16 +18,7 @@ class MyApp extends StatelessWidget {
       routes: {
         LiveMoneyScreen.routeName: (context) => LiveMoneyScreen(),
       },
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          color: Theme.of(context).colorScheme.secondary,
-        ),
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: buildTheme(context),
       home: HomePage(),
     );
   }
@@ -46,23 +38,41 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("home"),
       ),
-      body: Center(
+      body: Container(
+        padding: EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "enter your salary",
+              "얼마나 버시나요?",
               style: Theme.of(context).textTheme.headline2,
             ),
-            TextField(
-              keyboardType: TextInputType.number,
-              autofocus: true,
-            )
+            _buildInputSection(),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.navigate_next), onPressed: _moveToLiveScreen),
+    );
+  }
+
+  Widget _buildInputSection() {
+    var style = Theme.of(context).textTheme.headline3;
+
+    return Row(
+      children: [
+        Text(
+          "₩",
+          style: style,
+        ),
+        Container(
+            width: 100,
+            child: TextField(
+              keyboardType: TextInputType.number,
+              style: style,
+              autofocus: true,
+            ))
+      ],
     );
   }
 

@@ -1,5 +1,6 @@
 class Salary {
-  Salary(this.salary, {this.unit = SalaryUnit.YEAR, this.currency});
+  Salary(this.salary,
+      {this.unit = SalaryUnit.YEAR, this.currency = Currency.USD});
 
   int salary;
   SalaryUnit unit;

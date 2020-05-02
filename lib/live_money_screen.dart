@@ -8,7 +8,7 @@ class LiveMoneyScreen extends StatefulWidget {
   State<StatefulWidget> createState() => _LiveMoneyScreenState();
 }
 
-var salaryDummy = new Salary(20);
+var salaryDummy = new Salary(35000);
 
 class _LiveMoneyScreenState extends State<LiveMoneyScreen> {
   @override
